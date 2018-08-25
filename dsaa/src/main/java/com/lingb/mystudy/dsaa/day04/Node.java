@@ -13,8 +13,13 @@ public class Node<T> {
     public T data;
 
     /**
-     * 指针域，即指向的下一个结点，相当于 下一车厢
+     * 指针域
+     * previous即指向（存储）的上一个结点，相当于 上一车厢
+     * next即指向（存储）的下一个结点，相当于 下一车厢
+     *
      */
+    public Node previous;
+
     public Node<T> next;
 
     /**
@@ -22,8 +27,8 @@ public class Node<T> {
      *
      * @param value
      */
-    public Node(T value) {
-        this.data = value;
+    public Node(T data) {
+        this.data = data;
     }
 
     /**

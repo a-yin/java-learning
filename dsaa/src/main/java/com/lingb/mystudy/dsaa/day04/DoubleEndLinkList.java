@@ -1,17 +1,22 @@
 package com.lingb.mystudy.dsaa.day04;
 
 /**
- * 单链表，相当于 列车
+ * 双端链表，相当于 双头的列车
  *
  * Created by lingb on 2018/8/23
  */
-public class LinkList<T> {
+public class DoubleEndLinkList<T> {
 
     // 头结点
     private Node<T> head;
 
-    public LinkList() {
+    // 尾结点
+    private Node<T> tail;
+
+
+    public DoubleEndLinkList() {
         head = null;
+        tail = null;
     }
 
     /**
@@ -32,16 +37,15 @@ public class LinkList<T> {
     public void insertHead(T data) {
         // 插入的数据打包成结点
         Node<T> newNode = new Node<>(data);
-
         if (isEmpty()) {
-            head = newNode;
+            tail = newNode;
         }
-
         // newNode->old head
         // 将新结点连接链表的头部
         newNode.next = head;
         // head->newNode
-        // head永远存储第一个节点的地址
+        // head始终指向（存储）头结点
+        // newNode 为头结点
         head = newNode;
 
     }
@@ -54,19 +58,17 @@ public class LinkList<T> {
      */
     public void insertTail(T data) {
         Node<T> newNode = new Node<>(data);
-        Node<T> tmp = head;
         if (isEmpty()) {
             head = newNode;
+
+        } else {
+            // 尾结点插入
+            tail.next = newNode;
         }
 
-        // 循环到最后结点（尾结点）
-        while (tmp.next != null) {
-            // 向后移，tmp指向下一结点
-            tmp = tmp.next;
-        }
-        // 尾结点插入
-        tmp.next = newNode;
-
+        // tail始终指向（存储）尾结点
+        // newNode 为尾结点
+        tail = newNode;
     }
 
     /**
@@ -183,5 +185,6 @@ public class LinkList<T> {
 
         return size;
     }
+
 
 }
