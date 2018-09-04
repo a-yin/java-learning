@@ -1,4 +1,4 @@
-package com.lingb.mystudy.dsaa.day04;
+package com.lingb.mystudy.dsaa.day07;
 
 /**
  * 单链表，相当于 列车
@@ -8,7 +8,7 @@ package com.lingb.mystudy.dsaa.day04;
 public class LinkList<T> {
 
     // 头结点
-    private Node<T> head;
+    private Node<Student> head;
 
     public LinkList() {
         head = null;
@@ -29,9 +29,9 @@ public class LinkList<T> {
      * 插入一个结点（车厢）
      * @param data
      */
-    public void insertHead(T data) {
+    public void insertHead(Student data) {
         // 插入的数据打包成结点
-        Node<T> newNode = new Node<>(data);
+        Node<Student> newNode = new Node<>(data);
 
         if (isEmpty()) {
             head = newNode;
@@ -52,9 +52,9 @@ public class LinkList<T> {
      *
      * @param data
      */
-    public void insertTail(T data) {
-        Node<T> newNode = new Node<>(data);
-        Node<T> tmp = head;
+    public void insertTail(Student data) {
+        Node<Student> newNode = new Node<>(data);
+        Node<Student> tmp = head;
         if (isEmpty()) {
             head = newNode;
             return;
@@ -77,8 +77,8 @@ public class LinkList<T> {
      * @param value
      * @return
      */
-    public Node<T> deleteHead() {
-        Node<T> tmp = head;
+    public Node<Student> deleteHead() {
+        Node<Student> tmp = head;
         head = tmp.next;
         return tmp;
     }
@@ -91,9 +91,9 @@ public class LinkList<T> {
      * @param value
      * @return
      */
-    public Node<T> deleteTail() {
-        Node<T> preNode = head;
-        Node<T> curNode = preNode.next;
+    public Node<Student> deleteTail() {
+        Node<Student> preNode = head;
+        Node<Student> curNode = preNode.next;
 //
 //        // 删除E1
 //        if (size() == 1) {
@@ -125,10 +125,10 @@ public class LinkList<T> {
      * @param data
      * @return
      */
-    public Node<T> delete(T data) {
-        Node<T> preNode = head;
-        Node<T> curNode = head;
-        while (curNode.data != data) {
+    public Node<Student> delete(String key) {
+        Node<Student> preNode = head;
+        Node<Student> curNode = head;
+        while (!key.equals(curNode.data.getKey())) {
             if (curNode.next == null) {
                 return null;
             }
@@ -153,11 +153,30 @@ public class LinkList<T> {
 
 
     /**
+     * 查询
+     *
+     * @param key
+     * @return
+     */
+    public Node find(String key) {
+        Node<Student> current = head;
+        while (!key.equals(current.data.getKey())) {
+            if (current.next == null) {
+                return null;
+            }
+            current = current.next;
+        }
+
+        return current;
+    }
+
+
+    /**
      * 显示链表数据
      */
     public void display() {
         // 从头结点head 开始
-        Node<T> curNode = head;
+        Node<Student> curNode = head;
         System.out.println("头结点：" + curNode.data);
         // 循环到最后的结点
         while (curNode != null) {
@@ -176,7 +195,7 @@ public class LinkList<T> {
      */
     public int size() {
         int size = 0;
-        Node<T> curNode = head;
+        Node<Student> curNode = head;
         while (curNode != null) {
             size++;
             curNode = curNode.next;
