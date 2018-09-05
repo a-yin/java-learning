@@ -197,8 +197,10 @@ public class Sort {
         int leftPtr = left - 1;
         int rightPtr = right;
         while(true) {
+            // 先左边扫描
             // 循环,将比关键字小的留在左端
             while (leftPtr < rightPtr && arr[++leftPtr] < point) {};
+            // 后右边扫描
             // 循环，将比关键字大的留在右端
             while(rightPtr > leftPtr && arr[--rightPtr] > point) {};
 
@@ -245,7 +247,7 @@ public class Sort {
             return;
 
         } else {
-            // 设置关键字
+            // 设置关键字（右边）
             long point = arr[right];
             // 获得切入点，同时对数组进行划分
             int partition = partition(arr, left, right, point);
@@ -254,6 +256,124 @@ public class Sort {
             // 对右边的子数组进行快速排序
             quickSort(arr,partition + 1, right);
         }
+    }
+
+    /**
+     * 实现快速排序： 基准数归位的过程
+     *
+     * @param arr
+     * @param left
+     * @param right
+     */
+    public static void quickSort1(long[] arr, int left, int right) {
+        int i = 0;
+        int j = 0;
+        long refer = 0;
+        long tmp = 0;
+
+        if(left >= right) {
+            return;
+        }
+
+        i = left;
+        j = right;
+        // refer存储基准数（初始化为数组第一个数，即左边）
+        refer = arr[left];
+
+        // 当i = j （即相遇）时跳出循环
+        while (i < j) {
+
+            // 注意找的顺序，右边扫描
+            // 先从右往左找(找到小于基准数)
+            while (i < j && refer <= arr[j]) {
+                // 往左找
+                j--;
+            }
+
+            // 再从左往右找（找到大于基准数）
+            while (i < j && refer >= arr[i]) {
+                // 往右找
+                i++;
+            }
+
+            // 当i 与 j 没有相遇
+            if (i < j) {
+                // 交换两个数的位置
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+
+            }
+        }
+
+        // 此时i = j 相遇了
+        // 最终将基准数的位置与i=j相遇的位置交换
+        arr[left] = arr[i];
+        // 基准数归位
+        arr[i] = refer;
+
+        // 递归排序，对左边的子数组进行快速排序
+        quickSort1(arr,left, i - 1);
+        // 对右边的子数组进行快速排序
+        quickSort1(arr,i + 1, right);
+    }
+
+
+    /**
+     * 实现快速排序： 基准数归位的过程
+     *
+     * @param arr
+     * @param left
+     * @param right
+     */
+    public static void quickSort2(long[] arr, int left, int right) {
+
+        int i = 0;
+        int j = 0;
+        long refer = 0;
+        long tmp = 0;
+
+        if(left >= right) {
+            return;
+        }
+
+        i = left;
+        j = right;
+        // refer存储基准数（初始化为数组第一个数，即左边）
+        refer = arr[left];
+
+        // 当i = j （即相遇）时跳出循环
+        while (i < j) {
+
+            // 注意找的顺序，右边扫描
+            // 先从右往左找(找到小于基准数)
+            while (i < j && refer <= arr[j]) {
+                // 往左找
+                j--;
+            }
+
+            // 交换
+            arr[i] = arr[j];
+
+            // 再从左往右找（找到大于基准数）
+            while (i < j && refer >= arr[i]) {
+                // 往右找
+                i++;
+            }
+
+            // 交换(包括了最终将基准数的位置与i=j相遇的位置交换)
+            arr[j] = arr[i];
+
+        }
+
+        // 此时i = j 相遇了
+        // 基准数归位
+        arr[i] = refer;
+
+        // 递归排序，对左边的子数组进行快速排序
+        quickSort2(arr,left, i - 1);
+        // 对右边的子数组进行快速排序
+        quickSort2(arr,i + 1, right);
     }
 
 

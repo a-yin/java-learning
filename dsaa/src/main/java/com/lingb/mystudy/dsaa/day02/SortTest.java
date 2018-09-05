@@ -25,15 +25,26 @@ public class SortTest {
     @Test
     public void test5() {
         long[] arr  = new long[10];
-        for(int i = 0; i < 10;i++) {
+        long[] arr1  = new long[10];
+        long[] arr2  = new long[]{66,  13,  51,  76,  81,  26,  57,  69,  23};
+        for(int i = 0; i < 10; i++) {
             arr[i] = (long) (Math.random() * 99);
+            arr1[i] = (long) (Math.random() * 99);
         }
 
         Sort.displayArr(arr);
-
         Sort.quickSort(arr, 0, arr.length - 1);
-
         Sort.displayArr(arr);
+
+        System.out.println("--------------------------------");
+        Sort.displayArr(arr1);
+        Sort.quickSort1(arr1, 0, arr1.length - 1);
+        Sort.displayArr(arr1);
+
+        System.out.println("--------------------------------");
+        Sort.displayArr(arr2);
+        Sort.quickSort2(arr2, 0, arr2.length - 1);
+        Sort.displayArr(arr2);
     }
 
     /**

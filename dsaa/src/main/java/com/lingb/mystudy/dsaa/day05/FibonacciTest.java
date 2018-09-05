@@ -6,6 +6,7 @@ package com.lingb.mystudy.dsaa.day05;
 public class FibonacciTest {
 
     public static void main(String[] args) {
-        System.out.println(Fibonacci.getNumberByRecursion(5));
+        System.out.println(Fibonacci.getNumberByRecursion(2));
+        System.out.println(Fibonacci.getNumber(2));
     }
 }

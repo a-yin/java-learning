@@ -8,14 +8,46 @@ package com.lingb.mystudy.dsaa.day05;
 public class Fibonacci {
 
     public static int getNumberByRecursion(int n) {
+
+        if (n <= 0) {
+            return 0;
+        }
         if (n == 1) {
             return 1;
-        }
-        if (n == 2) {
-            return 2;
         }
 
         return getNumberByRecursion(n - 1) + getNumberByRecursion(n - 2);
     }
 
+
+    public static int getNumber(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+
+        int first = 0;
+        int second = 1;
+        int sum = 0;
+        for (int i = 2; i <= n; i++) {
+            sum = first + second;
+            first = second;
+            second = sum;
+        }
+
+        return sum;
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
