@@ -144,6 +144,11 @@ public class MyHashMap8<K, V> implements MyMap<K, V> {
         return null;
     }
 
+    @Override
+    public V remove(K key) {
+        return null;
+    }
+
 
     static class Node<K, V> implements Map.Entry<K, V> {
 
