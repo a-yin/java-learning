@@ -19,12 +19,10 @@ public class Student implements Serializable {
     private Integer age;
 
 
-    public Student() {
-    }
+    public Student() {}
 
     public Student(String name) {
         this.name = name;
-
     }
 
     public String getId() {

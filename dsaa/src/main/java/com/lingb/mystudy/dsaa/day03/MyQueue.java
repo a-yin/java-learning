@@ -31,7 +31,7 @@ public class MyQueue {
      * 默认构造方法
      */
     public MyQueue() {
-        arr = new int[10];
+        arr = new int[20];
         elements = 0;
         front = 0;
         // 队尾为空

@@ -7,8 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
 //        System.out.println(SuperClass.superHelloWorld);
-        System.out.println(new SubClass().subHelloWorld);
-        System.out.println(new SubClass().subHelloWorld);
+        System.out.println(SubClass.subHelloWorld);
+        System.out.println(SubClass.subHelloWorld);
 //        System.out.println(SubClass.SUB_STR);
     }
 }

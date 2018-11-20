@@ -15,36 +15,40 @@ import java.util.List;
  */
 public class ReflectTest {
 
+
     /**
      * 获取Class 对象
-     * 1) Object类中的getClass方法
-     * 2) 类名.class
-     * 3) 通过Class类的forName方法
+     * 1) 类名.class
+     * 2) 通过Class类的forName方法
+     * 3) Object类中的getClass方法
      *
-     * @param   []
-     * @return  void
+     * @param []
+     * @return void
      */
+    @Test
     public void testGetClass() {
-        System.out.println("Class ---------------------------------------------");
-        ReflectTest reflectTest = new ReflectTest();
-        // 对象.getClass 获取ClassTest类的反射对象
-        Class clazz1 = reflectTest.getClass();
-        // 类名.class获取ClassTest类的反射对象
-        Class clazz2 = String.class;
-        System.out.println(clazz1);
-        System.out.println(clazz2);
-        System.out.println("Class类反射的是否同一对象(地址) " + (clazz1 == clazz2));
 
+        // 类名.class获取Testit类的反射对象
+        Class clazz1 = Testit.class;
+        System.out.println(clazz1);
         try {
             // Class.forName(包名.类名)获取反射对象
-            Class clazz3 = Class.forName("com.lingb.mystudy.java.day02.ReflectTest");
-            System.out.println(clazz3);
-            System.out.println("Class类反射的是否同一对象(地址) " + (clazz1 == clazz3));
+            Class clazz2 = Class.forName("com.lingb.mystudy.java.day02.Testit");
+            System.out.println(clazz2);
+            System.out.println("类名.class 和 Class.forName() 是否同一对象(地址) " + (clazz1 == clazz2));
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        // 对象.getClass 获取Testit类的反射对象
+        Testit testit = new Testit();
+        Class clazz3 = testit.getClass();
+        System.out.println(clazz3);
+        System.out.println("类名.class 和 对象.getClass() 是否同一对象(地址) " + (clazz1 == clazz3));
+
     }
+
 
     /**
      * 获取name 信息
