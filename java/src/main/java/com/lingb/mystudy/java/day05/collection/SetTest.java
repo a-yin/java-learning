@@ -15,7 +15,7 @@ public class SetTest {
 
     /**
      * TreeSet 是 SortedSet 接口的实现类，TreeSet 可以确保集合元素处于排序状态
-     * Comparator comparator()
+     * comparator comparator()
      * Object first()
      * Object last()
      * Object lower(Object e)
@@ -30,7 +30,7 @@ public class SetTest {
     @Test
     public void testTreeSet2() {
         // 1、创建一个实现了Comparator 接口的对象 匿名内部类
-        // 2、将此对象即 Comparator 接口的对象 作为形参传递给TreeSet的构造方法
+        // 2、将此对象即 comparator 接口的对象 作为形参传递给TreeSet的构造方法
         Set<Student> set = new TreeSet<>(new Comparator() {
             // 向TreeSet 总添加Student类的对象，在此compare() 方法中，指明是按照Student的哪个属性排序的
             @Override
@@ -97,7 +97,7 @@ public class SetTest {
             }
         };
 
-        // 2、将此对象即 Comparator 接口的对象 作为形参传递给TreeSet的构造方法
+        // 2、将此对象即 comparator 接口的对象 作为形参传递给TreeSet的构造方法
         Set<Student> set = new TreeSet<>(com);
         // 3、向TreeSet中添加Comparator接口中的compare()方法中涉及的类的对象
         set.add(new Student(1, "CC"));

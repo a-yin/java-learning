@@ -31,7 +31,7 @@ public class StreamTest {
     @Test
     public void test1(){
         // 1、Java8 中的Collection 接口被扩展，提供了两个获取流的方法：
-        //      default Stream<E> stream() : 返回一个顺序流
+        //      default Stream<E> stream() : 返回一个顺序流（串行流）
         //      default Stream<E> parallelStream() : 返回一个并行流
         // Collection接口的实现类对象.stream()
         Collection<String> coll = new ArrayList<>();
@@ -52,7 +52,9 @@ public class StreamTest {
         // 4、由函数创建流：创建无限流
         // Stream类静态方法
         // 迭代：Stream.iterate()
-        Stream<Integer> stream3 = Stream.iterate(0, (x) -> x + 2);
+        Stream<Integer> stream3 = Stream.iterate(0, (x) -> x + 2)
+                                        .limit(10);
+
         stream3.forEach(System.out::println);
 
         // 生成：Stream.generate()

@@ -2,6 +2,10 @@ package com.lingb.mystudy.java.day10;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * 多线程，即多个线程执行
  * 两种方式创建线程：1）继承Thread 2）实现Runnable接口
@@ -9,6 +13,25 @@ import org.junit.Test;
  * Created by lingb on 2018/7/18
  */
 public class ThreadTest {
+
+    public static void main(String[] args) throws InterruptedException {
+        long start = System.currentTimeMillis();
+        final Random random = new Random();
+        final List<Integer> lists = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) {
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    lists.add(random.nextInt());
+                }
+            });
+            thread.start();
+            thread.join();
+        }
+
+        System.out.println("时间 " + (System.currentTimeMillis() - start));
+        System.out.println("size " + lists.size());
+    }
 
 
     /**

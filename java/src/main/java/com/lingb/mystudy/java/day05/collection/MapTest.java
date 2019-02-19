@@ -52,7 +52,7 @@ public class MapTest {
             }
         };
 
-        // 2、将此对象即 Comparator 接口的对象 作为形参传递给TreeSet的构造方法
+        // 2、将此对象即 comparator 接口的对象 作为形参传递给TreeSet的构造方法
         Map<Integer, Student> map = new TreeMap<>(com);
         // 3、向TreeSet中添加Comparator接口中的compare()方法中涉及的类的对象
         map.put(111, new Student(1, "CC"));
