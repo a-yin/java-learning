@@ -5,13 +5,18 @@ package com.lingb.mystudy.algorithm.binarytree;
  */
 public class PrintBinaryTree {
 
+    /**
+     * 控制台打印二叉树（横着看）
+     *
+     * @param head 根节点
+     */
     public static void printTree(TreeNode head) {
         System.out.println("Binary Tree:");
         printInOrder(head, 0, "H", 17);
         System.out.println();
     }
 
-    public static void printInOrder(TreeNode head, int height, String to, int len) {
+    private static void printInOrder(TreeNode head, int height, String to, int len) {
         if (head == null) {
             return;
         }
@@ -25,7 +30,7 @@ public class PrintBinaryTree {
         printInOrder(head.left, height + 1, "^", len);
     }
 
-    public static String getSpace(int num) {
+    private static String getSpace(int num) {
         String space = " ";
         StringBuffer buf = new StringBuffer("");
         for (int i = 0; i < num; i++) {

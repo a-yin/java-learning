@@ -13,8 +13,9 @@ public class StringDemo {
     String nice2 = new String("今天我很nice");
     // 【少用】
     String ok = new String(" 今天我也很OK ");
+    String ok1 = new String(" 今天我也很OK ");
 
-    public void testString() {
+    private void testString() {
         if (!nice.isEmpty()) {
             System.out.println(nice);
         }
@@ -39,6 +40,65 @@ public class StringDemo {
         System.out.println(ok.hashCode());
     }
 
+    private void testSwap() {
+        int a = 1;
+        int b = 2;
+        String c = "c";
+        String d = "d";
+        String e = new String("e");
+        String f = new String("f");
+        // swap(,) 方法交换
+        swap(a, b);
+        swap(c, d);
+        swap(e, f);
+
+        // 交换失败
+        // 12cd
+        // 12ef
+        System.out.println("" + a + b + c + d);
+        System.out.println("" + a + b + e + f);
+
+
+        // tmp 临时变量交换
+        String tmp = c;
+        c = d;
+        d = tmp;
+
+        String tmp1 = e;
+        e = f;
+        f = tmp1;
+
+        // 交换成功
+        // 12dc
+        // 12fe
+        System.out.println("" + a + b + c + d);
+        System.out.println("" + a + b + e + f);
+
+    }
+
+    private void swap(int i, int j) {
+        int tmp = i;
+        i = j;
+        j = tmp;
+    }
+    private void swap(String i, String j) {
+        String tmp = i;
+        i = j;
+        j = tmp;
+    }
+
+    private void testStringPool() {
+        String c = "aa";
+        String a = new String("aa");
+        String b = new String("aa");
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(a.equals(b));
+        System.out.println(a.equals(c));
+    }
+
     public static void main(String[] args) {
         new StringDemo().testString();
 
@@ -47,6 +107,21 @@ public class StringDemo {
         // 对象实例.getClass()
         System.out.println(new StringDemo().getClass());
 
+        // Java只支持值传递（没有引用传递）
+        // 经过测试 swap( , ) 方法不能交换基本数据类型以及字符串类型，因为直接赋值
+        // 引用类型才可以交换，是因为引用类型直接赋的是地址，地址指向的是同一个对象，所以能改变
+        new StringDemo().testSwap();
+
+        new StringDemo().testStringPool();
+
+        // "+"
+        String str = "";
+        str += 'a';
+        System.out.println(str);
+        str = str + 100;
+        System.out.println(str);
+        str = String.valueOf(new StringBuilder().append(str).append(100));
+        System.out.println(str);
     }
 
 }
